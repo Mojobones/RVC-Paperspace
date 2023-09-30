@@ -12,6 +12,7 @@ install: ## Install dependencies (Do everytime you start up a paperspace machine
 	pip install -r requirements.txt
 	pip install --upgrade lxml
 	pip install --upgrade ffmpy
+	pip install protobuf==3.20
 	apt-get update
 	apt -y install -qq aria2
 
