@@ -1096,7 +1096,6 @@ class SynthesizerTrnMs256NSFsid_nono(nn.Module):
             head = int(z_p.shape[2] * (1.0 - rate.item()))
             z_p = z_p[:, :, head:]
             x_mask = x_mask[:, :, head:]
-            nsff0 = nsff0[:, head:]
         z = self.flow(z_p, x_mask, g=g, reverse=True)
         o = self.dec(z * x_mask, g=g)
         return o, x_mask, (z, z_p, m_p, logs_p)
@@ -1242,7 +1241,6 @@ class SynthesizerTrnMs768NSFsid_nono(nn.Module):
             head = int(z_p.shape[2] * (1.0 - rate.item()))
             z_p = z_p[:, :, head:]
             x_mask = x_mask[:, :, head:]
-            nsff0 = nsff0[:, head:]
         z = self.flow(z_p, x_mask, g=g, reverse=True)
         o = self.dec(z * x_mask, g=g)
         return o, x_mask, (z, z_p, m_p, logs_p)
