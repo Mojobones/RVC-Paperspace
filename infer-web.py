@@ -1,8 +1,10 @@
 import os
 import sys
+from dotenv import load_dotenv
 
 now_dir = os.getcwd()
 sys.path.append(now_dir)
+load_dotenv()
 from infer.modules.vc.modules import VC
 from infer.modules.uvr5.modules import uvr
 from infer.lib.train.process_ckpt import (
@@ -14,7 +16,6 @@ from infer.lib.train.process_ckpt import (
 from i18n.i18n import I18nAuto
 from configs.config import Config
 from sklearn.cluster import MiniBatchKMeans
-from dotenv import load_dotenv
 import torch
 import numpy as np
 import gradio as gr
@@ -48,7 +49,6 @@ warnings.filterwarnings("ignore")
 torch.manual_seed(114514)
 
 
-load_dotenv()
 config = Config()
 vc = VC(config)
 
