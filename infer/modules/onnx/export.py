@@ -1,6 +1,6 @@
 import torch
 
-from infer.lib.infer_pack.models_onnx import SynthesizerTrnMsNSFsidM
+from infer.modules.onnx.onnx_exp_modules.models_onnx import SynthesizerTrnMsNSFsidM
 
 
 def export_onnx(ModelPath, ExportedPath):
@@ -44,8 +44,8 @@ def export_onnx(ModelPath, ExportedPath):
             "rnd": [2],
         },
         do_constant_folding=False,
-        opset_version=13,
-        verbose=False,
+        opset_version=14,
+        verbose=True,
         input_names=input_names,
         output_names=output_names,
     )

@@ -144,7 +144,8 @@ class VC:
     def vc_single(
         self,
         sid,
-        input_audio_path,
+        input_audio_path0,
+        input_audio_path1,
         f0_up_key,
         f0_file,
         f0_method,
@@ -155,12 +156,16 @@ class VC:
         resample_sr,
         rms_mix_rate,
         protect,
+        crepe_hop_length
     ):
-        if input_audio_path is None:
+        if input_audio_path0 is None and input_audio_path1 is None:
             return "You need to upload an audio", None
         f0_up_key = int(f0_up_key)
         try:
-            audio = load_audio(input_audio_path, 16000)
+            if input_audio_path0:
+                audio = load_audio(input_audio_path0, 16000)
+            else:
+                audio = load_audio(input_audio_path1, 16000)
             audio_max = np.abs(audio).max() / 0.95
             if audio_max > 1:
                 audio /= audio_max
@@ -169,8 +174,8 @@ class VC:
             if self.hubert_model is None:
                 self.hubert_model = load_hubert(self.config)
 
-            if file_index:
-                file_index = (
+            file_index = (
+                (
                     file_index.strip(" ")
                     .strip('"')
                     .strip("\n")
@@ -178,17 +183,17 @@ class VC:
                     .strip(" ")
                     .replace("trained", "added")
                 )
-            elif file_index2:
-                file_index = file_index2
-            else:
-                file_index = ""  # 防止小白写错，自动帮他替换掉
+                if file_index != ""
+                else file_index2
+            )  # 防止小白写错，自动帮他替换掉
 
             audio_opt = self.pipeline.pipeline(
                 self.hubert_model,
                 self.net_g,
                 sid,
                 audio,
-                input_audio_path,
+                input_audio_path0,
+                input_audio_path1,
                 times,
                 f0_up_key,
                 f0_method,
@@ -201,6 +206,7 @@ class VC:
                 rms_mix_rate,
                 self.version,
                 protect,
+                crepe_hop_length,
                 f0_file,
             )
             if self.tgt_sr != resample_sr >= 16000:
@@ -271,6 +277,7 @@ class VC:
                     resample_sr,
                     rms_mix_rate,
                     protect,
+                    crepe_hop_length
                 )
                 if "Success" in info:
                     try:
