@@ -1962,14 +1962,6 @@ with gr.Blocks(title=" RVC Web-ui Code's Mangio patch 🍇 ") as app:
         # with gr.TabItem(i18n("点击查看交流、问题反馈群号")):
         #     gr.Markdown(value=i18n("xxxxx"))
 
-    if config.iscolab:
-        app.queue(concurrency_count=511, max_size=1022).launch(share=True)
-    else:
-        app.queue(concurrency_count=511, max_size=1022).launch(
-            server_name="0.0.0.0",
-            inbrowser=not config.noautoopen,
-            server_port=config.listen_port,
-            quiet=True,
-        )
+app.queue(concurrency_count=511, max_size=1022).launch(share=True)
 
 #endregion
