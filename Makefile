@@ -46,10 +46,10 @@ basev2: ## Download version 2 pre-trained models (Do only once after cloning the
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/pretrained_v2/G40k.pth -d assets/pretrained_v2 -o G40k.pth
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/pretrained_v2/G48k.pth -d assets/pretrained_v2 -o G48k.pth
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/pretrained_v2/f0D32k.pth -d assets/pretrained_v2 -o f0D32k.pth
-	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/pretrained_v2/f0D40k.pth -d assets/pretrained_v2 -o f0D40k.pth
+	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/MUSTAR/RIN_E3/resolve/main/RIN_E3_D.pth -d assets/pretrained_v2 -o f0D40k.pth
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/pretrained_v2/f0D48k.pth -d assets/pretrained_v2 -o f0D48k.pth
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/pretrained_v2/f0G32k.pth -d assets/pretrained_v2 -o f0G32k.pth
-	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/pretrained_v2/f0G40k.pth -d assets/pretrained_v2 -o f0G40k.pth
+	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/MUSTAR/RIN_E3/resolve/main/RIN_E3_G.pth -d assets/pretrained_v2 -o f0G40k.pth
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/pretrained_v2/f0G48k.pth -d assets/pretrained_v2 -o f0G48k.pth
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/uvr5_weights/HP2-人声vocals+非人声instrumentals.pth -d assets/uvr5_weights -o HP2-人声vocals+非人声instrumentals.pth
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/uvr5_weights/HP5-主旋律人声vocals+其他instrumentals.pth -d assets/uvr5_weights -o HP5-主旋律人声vocals+其他instrumentals.pth
