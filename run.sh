@@ -4,9 +4,6 @@ if [ "$(uname)" = "Darwin" ]; then
   # macOS specific env:
   export PYTORCH_ENABLE_MPS_FALLBACK=1
   export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0
-elif [ "$(uname)" != "Linux" ]; then
-  echo "Unsupported operating system."
-  exit 1
 fi
 
 if [ -d ".venv" ]; then
@@ -22,8 +19,8 @@ else
     if [ "$(uname)" = "Darwin" ] && command -v brew >/dev/null 2>&1; then
       brew install python@3.8
     elif [ "$(uname)" = "Linux" ] && command -v apt-get >/dev/null 2>&1; then
-      sudo apt-get update
-      sudo apt-get install python3.8
+      sudo apt update
+      sudo apt install -y python3.8
     else
       echo "Please install Python 3.8 manually."
       exit 1
@@ -50,13 +47,5 @@ else
   fi
 fi
 
-# Download models
-chmod +x tools/dlmodels.sh
-./tools/dlmodels.sh
-
-if [ $? -ne 0 ]; then
-  exit 1
-fi
-
 # Run the main script
-python3.8 infer-web.py --pycmd python3.8
+python3 infer-web.py --pycmd python3

@@ -1,15 +1,14 @@
-import platform, os
+import platform
 import ffmpeg
 import numpy as np
 import av
-from io import BytesIO
 
 
 def wav2(i, o, format):
-    inp = av.open(i, "rb")
+    inp = av.open(i, "r")
     if format == "m4a":
         format = "mp4"
-    out = av.open(o, "wb", format=format)
+    out = av.open(o, "w", format=format)
     if format == "ogg":
         format = "libvorbis"
     if format == "mp4":

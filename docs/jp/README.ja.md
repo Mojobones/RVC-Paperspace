@@ -7,7 +7,8 @@ VITSに基づく使いやすい音声変換（voice changer）framework<br><br>
 
 <img src="https://counter.seku.su/cmoe?name=rvc&theme=r34" /><br>
 
-[![Open In Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&color=525252)](https://colab.research.google.com/github/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/blob/main/Retrieval_based_Voice_Conversion_WebUI.ipynb)
+[![RVC v1](https://img.shields.io/badge/RVCv1-F9AB00?style=for-the-badge&logo=googlecolab&color=525252)](https://colab.research.google.com/github/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/blob/main/tools/ipynb/v1.ipynb)
+[![RVC v2](https://img.shields.io/badge/RVCv2-F9AB00?style=for-the-badge&logo=googlecolab&color=525252)](https://colab.research.google.com/github/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/blob/main/tools/ipynb/v2.ipynb)
 [![Licence](https://img.shields.io/badge/LICENSE-MIT-green.svg?style=for-the-badge)](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/blob/main/LICENSE)
 [![Huggingface](https://img.shields.io/badge/🤗%20-Spaces-yellow.svg?style=for-the-badge)](https://huggingface.co/lj1995/VoiceConversionWebUI/tree/main/)
 
@@ -214,9 +215,9 @@ sudo usermod -aG video $USERNAME
 ### 直接起動
 
 以下のコマンドで WebUI を起動します
-'''bash
+```bash
 python infer-web.py
-'''
+```
 
 ### 統合パッケージの使用
 
@@ -228,15 +229,15 @@ python infer-web.py
 
 #### MacOS ユーザー
 
-'''bash
+```bash
 sh ./run.sh
-'''
+```
 
 ### IPEX 技術が必要な I カードユーザー向け(Linux のみ)
 
-'''bash
+```bash
 source /opt/intel/oneapi/setvars.sh
-'''
+```
 
 ## 参考プロジェクト
 
