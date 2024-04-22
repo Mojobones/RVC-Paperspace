@@ -1608,4 +1608,4 @@ with gr.Blocks(title="RVC WebUI") as app:
             except:
                 gr.Markdown(traceback.format_exc())
 
-    app.queue(concurrency_count=511, max_size=1022).launch(share=True)
+app.queue(max_size=1022).launch(share=True)
