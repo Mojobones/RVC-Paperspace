@@ -28,13 +28,20 @@ def check_model(
         return False
     with open(target, "rb") as f:
         digest = sha256(f)
+        bakfile = f"{target}.bak"
         if digest != hash:
-            logger.info(f"{target} sha256 hash mismatch.")
+            logger.warn(f"{target} sha256 hash mismatch.")
             logger.info(f"expected: {hash}")
             logger.info(f"real val: {digest}")
+            logger.warn("please add parameter --update to download the latest assets.")
             if remove_incorrect:
-                os.remove(str(target))
+                if not os.path.exists(bakfile):
+                    os.rename(str(target), bakfile)
+                else:
+                    os.remove(str(target))
             return False
+        if remove_incorrect and os.path.exists(bakfile):
+            os.remove(bakfile)
     return True
 
 
@@ -181,7 +188,7 @@ def download_all_assets(tmpdir: str, version="0.2.2"):
     }
     system_type = platform.system().lower()
     architecture = platform.machine().lower()
-    is_win = architecture == "windows"
+    is_win = system_type == "windows"
 
     architecture = archs.get(architecture, None)
     if not architecture:

@@ -53,6 +53,15 @@ torch.manual_seed(114514)
 config = Config()
 vc = VC(config)
 
+if not config.nocheck:
+    from infer.lib.rvcmd import check_all_assets, download_all_assets
+
+    if not check_all_assets(update=config.update):
+        if config.update:
+            download_all_assets(tmpdir=tmp)
+            if not check_all_assets(update=config.update):
+                logging.error("counld not satisfy all assets needed.")
+                exit(1)
 
 if config.dml == True:
 
